@@ -6,7 +6,7 @@ using UnityEngine;
 public class PropSpin : MonoBehaviour
 
 {
-    public float speed = 500000000f;
+    public float speed = 5000000f;
 
 
     // Update is called once per frame
