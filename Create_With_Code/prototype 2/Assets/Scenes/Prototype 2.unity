@@ -233,10 +233,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalPrefabs:
-  - {fileID: 7421449336511401622, guid: e53ccfab1c42a47bba298fe3217affd1, type: 3}
-  - {fileID: 6907118306449287685, guid: f419b3f49e6fa4e1c87b95cababea101, type: 3}
-  - {fileID: 5156179950786886979, guid: 6668c2e5dba584e11adc6aa75779ed3c, type: 3}
   - {fileID: 5207693106708180265, guid: f0b83147cd2db428b99debe09ed4498a, type: 3}
+  - {fileID: 5156179950786886979, guid: 6668c2e5dba584e11adc6aa75779ed3c, type: 3}
+  - {fileID: 6907118306449287685, guid: f419b3f49e6fa4e1c87b95cababea101, type: 3}
+  - {fileID: 7421449336511401622, guid: e53ccfab1c42a47bba298fe3217affd1, type: 3}
 --- !u!1001 &133475302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -605,8 +605,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 45
-  orthographic: 0
-  orthographic size: 10
+  orthographic: 1
+  orthographic size: 12
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
