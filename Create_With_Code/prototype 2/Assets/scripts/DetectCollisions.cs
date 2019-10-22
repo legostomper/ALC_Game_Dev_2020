@@ -21,6 +21,8 @@ public class DetectCollisions : MonoBehaviour
 
     void Update()
     {
-        
+
+
+
     }
 }
