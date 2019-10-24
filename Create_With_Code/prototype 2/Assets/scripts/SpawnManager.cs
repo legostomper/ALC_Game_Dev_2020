@@ -9,9 +9,11 @@ public class SpawnManager : MonoBehaviour
 {
 private float spawnRangeX = 20;
 private float spawnPosZ = 20;
+
 public GameObject[] animalPrefabs;
+
 private float startDelay = 0f;
-    private float spawnInterval = 2f;
+private float spawnInterval = 2f;
 
 
     private void Start()
