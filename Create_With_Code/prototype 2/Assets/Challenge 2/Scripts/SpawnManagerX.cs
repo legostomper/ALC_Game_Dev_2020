@@ -9,7 +9,7 @@ public class SpawnManagerX : MonoBehaviour
     private float spawnLimitXLeft = -22;
     private float spawnLimitXRight = 7;
     private float spawnPosY = 30;
-
+    private float spawnInterval = Random.Range(3, 5);
     private float startDelay = 1.0f;
     
 
@@ -17,10 +17,10 @@ public class SpawnManagerX : MonoBehaviour
     void Start()
     {
 
-        Invoke("SpawnRandomBall", startDelay, Random.Range(0, 5));
+        Invoke("SpawnRandomBall", startDelay);
 
 
-        }
+    }
         
     
 
@@ -29,6 +29,9 @@ public class SpawnManagerX : MonoBehaviour
     // Spawn random ball at random x position at top of play area
     void SpawnRandomBall ()
     {
+
+        Invoke("SpawnRandomBall", Random.Range(3, 5));
+
         // Generate random ball index and random spawn position
         Vector3 spawnPos = new Vector3(Random.Range(spawnLimitXLeft, spawnLimitXRight), spawnPosY, 0);
 
