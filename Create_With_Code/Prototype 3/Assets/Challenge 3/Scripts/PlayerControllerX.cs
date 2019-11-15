@@ -16,7 +16,7 @@ public class PlayerControllerX : MonoBehaviour
     private AudioSource playerAudio;
     public AudioClip moneySound;
     public AudioClip explodeSound;
-
+    public AudioClip BoingSound;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +37,7 @@ public class PlayerControllerX : MonoBehaviour
            
             playerRb.AddForce(Vector3.up * floatForce);
         }
+
     }
 
     private void OnCollisionEnter(Collision other)
@@ -49,6 +50,7 @@ public class PlayerControllerX : MonoBehaviour
             gameOver = true;
             Debug.Log("Game Over!");
             Destroy(other.gameObject);
+       
         } 
 
         // if player collides with money, fireworks
@@ -58,6 +60,18 @@ public class PlayerControllerX : MonoBehaviour
             playerAudio.PlayOneShot(moneySound, 1.0f);
             Destroy(other.gameObject);
 
+        }
+
+        if (other.gameObject.CompareTag("Ground"))
+        { 
+            playerRb.AddForce(Vector3.up * floatForce * 20);
+            playerAudio.PlayOneShot(BoingSound, 5f);
+        }
+
+        if (gameOver == true)
+        {
+            
+            
         }
 
     }
