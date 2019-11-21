@@ -11,9 +11,9 @@ public class playerMovement : MonoBehaviour
     public bool isOnGround = true;
     public bool gameOver = false;
 
-    public float jumpForce = 10;
+    public float jumpForce = 7f;
     public float speed = 0.1f;
-    public float rotationSpeed = 5f;
+    public float rotationSpeed = 1.5f;
     public float HorizontalInput;
     public float turnSpeed = 10f;
     public float back = 0.05f;
@@ -32,47 +32,49 @@ public class playerMovement : MonoBehaviour
 
 
         // move the frog forward and back
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) && !gameOver)
         {
             transform.Translate(Vector3.left * speed);
         }
 
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) && isOnGround && !gameOver)
         {
             transform.Translate(Vector3.right * back);
         }
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) && !gameOver)
         {
             transform.Rotate(Vector3.up * turnSpeed);
         }
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) && !gameOver)
         {
             transform.Rotate(Vector3.down * turnSpeed);
         }
 
         if (Input.GetKey(KeyCode.Space) && isOnGround && !gameOver)
         {
-
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isOnGround = false;
         }
 
+    }
 
-        void OnCollisionEnter(Collision other)
+        private void OnCollisionEnter(Collision collision)
         {
 
-            if (other.gameObject.CompareTag("BadBoi"))
+            if (collision.gameObject.CompareTag("Ground"))
             {
-
-                Debug.Log("Game Over!");
-
-                Destroy(other.gameObject);
-
+                isOnGround = true;
+            }
+            else if (collision.gameObject.CompareTag("BadBoi"))
+            {
+                gameOver = true;
+                Debug.Log("Game Over");
+            
             }
 
-
         }
-    }
+    
 }
 

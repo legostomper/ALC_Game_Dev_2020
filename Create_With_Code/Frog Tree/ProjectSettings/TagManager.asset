@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - BadBoi
+  - Ground
   layers:
   - Default
   - TransparentFX
