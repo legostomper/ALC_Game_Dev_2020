@@ -6,7 +6,7 @@ public class badBoi : MonoBehaviour
 {
 
     private Rigidbody playerRb;
-    public float floatForce = 3;
+    public float floatForce = 100;
 
     // Start is called before the first frame update
     void Start()

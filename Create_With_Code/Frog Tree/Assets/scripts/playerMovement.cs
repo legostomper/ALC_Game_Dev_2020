@@ -13,7 +13,7 @@ public class playerMovement : MonoBehaviour
 
     public float jumpForce = 7f;
     public float speed = 0.1f;
-    public float rotationSpeed = 1.5f;
+    public float rotationSpeed = 1f;
     public float HorizontalInput;
     public float turnSpeed = 10f;
     public float back = 0.05f;

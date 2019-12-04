@@ -4,32 +4,54 @@ using UnityEngine;
 
 public class BadBoiSpawner : MonoBehaviour
 {
-    public GameObject obstaclePrefab;
-    private Vector3 spawnPos = new Vector3(0, 10, 0);
-    private float startDelay = 3f;
-    private float repeatRate = 0.0001f;
-    private playerMovement playerControllerScript;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        InvokeRepeating("SpawnObstacle", startDelay, repeatRate);
-        GameObject.Find("Player").GetComponent<playerMovement>();
-    }
-
-    // Update is called once per frame
-    void Update()
+    public class Offsets : MonoBehaviour
     {
 
+        public GameObject[] prefabs;
+        public GameObject player;
+
+        float xPos;
+        float yPos;
+        float zPos;
+
+        const float radius = 0.5f;
+
+        public void Start()
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
+
+        public void SpawnObject()
+        {
+            xPos = Random.Range(-3, 3); //Makes a random number from -3 to 3.
+
+            if (xPos < -1)
+                xPos = -2;
+            else if (xPos > 1)
+                xPos = 2;
+            else
+                xPos = 0;
+            //This will align your xPos to 2, 0 or -2.
+
+            zPos = player.transform.position.z + 50;
+            //I'm not sure if this is what you want.
+            //If not you can simply use the Random class methods
+
+            yPos = CheckForYPosition();
+        }
+
+        public float CheckForYPosition()
+        { //This is a "kind-of" loop that checks if the place is free. if not add 2 to yPos and recheck.
+            if (Physics.CheckSphere(new Vector3(xPos, yPos, zPos), radius))
+            {
+                yPos += 15;
+                return CheckForYPosition();
+            }
+            else
+            {
+                return yPos;
+            }
+        }
+
     }
-
-    void SpawnObstacle()
-    {
-        
-            Instantiate(obstaclePrefab, spawnPos, obstaclePrefab.transform.rotation);
-        
-    }
-
-
-
 }
