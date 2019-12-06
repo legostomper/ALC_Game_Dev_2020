@@ -4,31 +4,29 @@ using UnityEngine;
 
 public class badBoi : MonoBehaviour
 {
-
-    private Rigidbody playerRb;
-    public float floatForce = 100;
+    public float speed;
+    private Rigidbody enemyRb;
+  
+    private GameObject Player;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerRb = GetComponent<Rigidbody>();
+        enemyRb = GetComponent<Rigidbody>();
+        Player = GameObject.Find("player");
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        Vector3 lookDirection = (Player.transform.position - transform.position).normalized;
 
+        enemyRb.AddForce(lookDirection * speed);
     }
 
-    private void OnCollisionEnter(Collision other)
-    {
+   
+        
 
-
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            playerRb.AddForce(Vector3.up * floatForce * 20);
-
-        }
-
-    }
+    
 }
