@@ -6,7 +6,7 @@ public class badBoi : MonoBehaviour
 {
     public float speed;
     private Rigidbody enemyRb;
-  
+    public bool isOnGround = true;
     private GameObject Player;
 
     // Start is called before the first frame update
@@ -18,15 +18,23 @@ public class badBoi : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() 
     {
         Vector3 lookDirection = (Player.transform.position - transform.position).normalized;
 
         enemyRb.AddForce(lookDirection * speed);
     }
 
-   
-        
+    private void OnCollisionEnter(Collision collision)
+    {
 
-    
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isOnGround = true;
+        }
+
+      
+    }
+
+
 }

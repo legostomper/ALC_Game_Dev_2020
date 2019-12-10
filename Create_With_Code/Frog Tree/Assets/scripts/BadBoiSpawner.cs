@@ -4,27 +4,42 @@ using UnityEngine;
 
 public class BadBoiSpawner : MonoBehaviour
 {
-    public GameObject[] objectPrefabs;
-
-    private float spawnDelay = 1f;
-    private float spawnInterval = 0.01f;
-
-    
+    public GameObject enemyPrefab;
+    private float spawnRange = 10;
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnObjects", spawnDelay, spawnInterval);
-        
+
     }
 
-    // Spawn obstacles
-    void SpawnObjects()
+    private void Update()
     {
-        Instantiate;
+        Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
+
+
+
+        Vector3 GenerateSpawnPosition()
+        {
+            float spawnPosX = Random.Range(-spawnRange, spawnRange);
+            float spawnPosZ = Random.Range(-10, -7);
+            Vector3 randomPos = new Vector3(spawnPosX, 100, spawnPosZ);
+            return randomPos;
+        }
 
     }
+
 
 }
+
+   
+
+
+    
+    
+
+
+
+
 
 
