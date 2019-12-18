@@ -74,7 +74,13 @@ public class playerMovement : MonoBehaviour
             
             }
 
+        if (collision.gameObject.CompareTag("Win"))
+        {
+            Debug.Log("You Won");
+            gameOver = true;
         }
+
+    }
     
 }
 
