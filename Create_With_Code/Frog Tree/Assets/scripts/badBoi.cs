@@ -20,9 +20,7 @@ public class badBoi : MonoBehaviour
     // Update is called once per frame
     void Update() 
     {
-        Vector3 lookDirection = (Player.transform.position - transform.position).normalized;
-
-        enemyRb.AddForce(lookDirection * speed);
+        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -31,9 +29,14 @@ public class badBoi : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isOnGround = true;
+            Destroy(gameObject);
         }
 
-      
+        if (collision.gameObject.CompareTag("BadBoi"))
+        { 
+            Destroy(gameObject);
+        }
+
     }
 
 
